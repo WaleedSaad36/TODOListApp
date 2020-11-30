@@ -20,6 +20,7 @@
 		78D9E848255C64D500FBEF43 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E847255C64D500FBEF43 /* UserData.swift */; };
 		78D9E84A255C668D00FBEF43 /* AddNewTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E849255C668D00FBEF43 /* AddNewTaskResponse.swift */; };
 		78DA9680256C6B9700F47219 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DA967F256C6B9700F47219 /* APIRouter.swift */; };
+		78E1C18025758B0000E649EF /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E1C17F25758B0000E649EF /* profileView.swift */; };
 		78E90C1E25561AA7003AC3A3 /* EX+UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E90C1D25561AA7003AC3A3 /* EX+UIView+Loader.swift */; };
 		78E90C27255624FA003AC3A3 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E90C25255624FA003AC3A3 /* TodoCell.swift */; };
 		78E90C28255624FA003AC3A3 /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E90C26255624FA003AC3A3 /* TodoCell.xib */; };
@@ -62,6 +63,7 @@
 		78D9E847255C64D500FBEF43 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		78D9E849255C668D00FBEF43 /* AddNewTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskResponse.swift; sourceTree = "<group>"; };
 		78DA967F256C6B9700F47219 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		78E1C17F25758B0000E649EF /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
 		78E90C1D25561AA7003AC3A3 /* EX+UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+UIView+Loader.swift"; sourceTree = "<group>"; };
 		78E90C25255624FA003AC3A3 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		78E90C26255624FA003AC3A3 /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				780352DC256EF652007AA1E9 /* TodoView.swift */,
+				78E1C17F25758B0000E649EF /* profileView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -274,8 +277,8 @@
 		B76E56A92548A2EA00C13D43 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				780352DB256EF5F1007AA1E9 /* Main */,
 				780352D6256ED0E1007AA1E9 /* AuthView */,
+				780352DB256EF5F1007AA1E9 /* Main */,
 				780352D5256ED0C7007AA1E9 /* TodoCell */,
 			);
 			path = View;
@@ -482,6 +485,7 @@
 				78CF7414256E74F3009D31CB /* ProfilePresenter.swift in Sources */,
 				B76E56C32548B2B100C13D43 /* Constants.swift in Sources */,
 				78BF4D6C25692B79003CC98A /* SignInPresenter.swift in Sources */,
+				78E1C18025758B0000E649EF /* profileView.swift in Sources */,
 				780352D8256ED3FF007AA1E9 /* SignInView.swift in Sources */,
 				780352DD256EF652007AA1E9 /* TodoView.swift in Sources */,
 				78FEF253254D8E9E00E913B1 /* EX+VC.swift in Sources */,

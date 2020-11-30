@@ -10,9 +10,9 @@ import Foundation
 
 
 class TodoPresenter{
-    let view:TodoListVC!
+    let view:TodoProtocol!
     
-    init (view:TodoListVC){
+    init (view:TodoProtocol){
         self.view = view
     }
     
@@ -50,9 +50,11 @@ class TodoPresenter{
 //                for todo in result.data {
 //                    todoDecsriptionARR.append(todo.description ?? "")
 //                }
-                self.view.todoArr = result.data
+                self.view.addProtocolArr(TodoArr: result.data)
                 
-                self.view.tableView.reloadData()
+//                self.view.todoArr = result.data
+                self.view.TableViwe.reloadData()
+              // self.view.tableView.reloadData()
             }
         
         self.view.hideLoader()

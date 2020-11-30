@@ -7,7 +7,16 @@
 //
 
 import UIKit
-
+protocol TodoProtocol :class{
+    
+    
+    func showLoader()
+   
+    func hideLoader()
+    func addProtocolArr(TodoArr:[TaskData])
+    var TableViwe:UITableView { get }
+    
+}
 
 
 
@@ -15,7 +24,6 @@ class TodoListVC: UIViewController {
 
     @IBOutlet var TodoView: TodoView!
     @IBOutlet weak var navigationBar: UINavigationItem!
-    @IBOutlet weak var tableView: UITableView!
     
     var addNote: UITextField?
     var todoArr:[TaskData] = []
@@ -26,14 +34,11 @@ class TodoListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.register(UINib.init(nibName: Cells.todoCell, bundle: nil), forCellReuseIdentifier: Cells.todoCell)
+        setUpTableView()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.navigationBar.hidesBackButton = true
         TodoView.setUp()
         self.presenter.loadAllData()
-        
+        self.navigationBar.hidesBackButton = true
     }
     
     // MARK:- Public Methods
@@ -45,28 +50,17 @@ class TodoListVC: UIViewController {
         return todoListVC
     }
     
-    
-    
-    
-//
-//    func setUpTableView () {
-//        self.tableView.register(UINib.init(nibName: Cells.todoCell, bundle: nil), forCellReuseIdentifier: Cells.todoCell)
-//        self.tableView.dataSource = self
-//        self.tableView.delegate = self
-//        self.tableView.separatorStyle = .none
-//        self.tableView.backgroundColor = UIColor.clear
-//        self.tableView.isOpaque = false
-//
-//    }
-//
-    func showLoader(){
-         self.view.showLoader()
+    func TableViewToProtocol(TableView:UITableView){
+        self.TodoView.tableView = TableView
     }
-    
-    func hideLoader(){
-        self.view.HideLoader()
+
+    func setUpTableView () {
+        self.TodoView.tableView.register(UINib.init(nibName: Cells.todoCell, bundle: nil), forCellReuseIdentifier: Cells.todoCell)
+        self.TodoView.tableView.dataSource = self
+        self.TodoView.tableView.delegate = self
+
     }
-    
+
     
     @IBAction func addItemsBtn(_ sender: Any) {
         
@@ -86,20 +80,6 @@ class TodoListVC: UIViewController {
                 
                 
                 self.presenter.addNewTaskTodo( description: descriptionAdd)
-                
-                
-                
-//                APIManager.addNewTask(description: descriptionAdd) { (succes) in
-//
-//                    if succes {
-//                        print("Task has been uploaded successfully")
-//                        self.loadAllData()
-//                    }else {
-//                        print("field to addNewTask")
-//                    }
-//
-//                }
-            
             
             
         }
@@ -142,13 +122,6 @@ extension TodoListVC: UITableViewDataSource,UITableViewDelegate{
             return UITableViewCell()
         }
      
-        
-        
-        //cell.descriptionLbl.text = todoArr[indexPath.row].description
-//        cell.descriptionLbl.text = todoArr[indexPath.row].description
-//        cell.descriptionLbl.text = todoArr[idec]
-        //cell.configer(Todo: todoArr[indexPath.row])
-        
         cell.descriptionLbl.text = todoArr[indexPath.row].description
        return cell
     }
@@ -163,9 +136,29 @@ extension TodoListVC: UITableViewDataSource,UITableViewDelegate{
         guard editingStyle == .delete else {return}
         todoArr.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        self.tableView.reloadData()
+        self.TodoView.tableView.reloadData()
     }
     
+    
+    
+}
+extension TodoListVC:TodoProtocol{
+    
+    var TableViwe: UITableView {
+        return self.TodoView.tableView
+    }
+    
+    func addProtocolArr(TodoArr: [TaskData]) {
+        self.todoArr = TodoArr
+    }
+    
+    func showLoader(){
+        self.view.showLoader()
+    }
+    
+    func hideLoader(){
+        self.view.HideLoader()
+    }
     
     
 }

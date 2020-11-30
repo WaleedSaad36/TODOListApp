@@ -89,7 +89,7 @@ enum APIRouter: URLRequestConvertible{
         //httpMethod
         urlRequest.httpMethod = method.rawValue
         switch self {
-        case .getTodos , .addNewTask, .getLoggin:
+        case .getTodos , .addNewTask, .getLoggin, .logOutUser, .UpdateProfileData:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.authorization)
             

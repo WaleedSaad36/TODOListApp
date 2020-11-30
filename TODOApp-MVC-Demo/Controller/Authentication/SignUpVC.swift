@@ -30,37 +30,15 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var imageBackground: UIImageView!
     
-    
-    
+
     var presenter: SignUpPresenter!
-    
-    @IBOutlet weak var lbl1: UILabel!
-    
-    @IBOutlet weak var lbl2: UILabel!
-    
-    @IBOutlet weak var lbl4: UILabel!
-    
-    @IBOutlet weak var lbl5: UILabel!
-    
-    @IBOutlet weak var userNameTxt: UITextField!
-    
-    
-    @IBOutlet weak var emailTxt: UITextField!
-    
-    @IBOutlet weak var passwordTxt: UITextField!
-    
-    
-    @IBOutlet weak var ageTxt: UITextField!
-    
-    
-    
     
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailIcone(namedIcon:"emailIcon" , textField: emailTxt)
+        emailIcone(namedIcon:"emailIcon" , textField: SignUpView.emailTxt)
         SignUpView.setUp()
         
         
@@ -89,7 +67,7 @@ class SignUpVC: UIViewController {
     
     @IBAction func registerPressBtn(_ sender: Any) {
         
-        self.presenter.tryRegister(userName: userNameTxt.text ?? "", email: emailTxt.text ?? "", password: passwordTxt.text ?? "" , age: ageTxt.text ?? "")
+        self.presenter.tryRegister(userName: SignUpView.userNameTxt.text ?? "", email: SignUpView.emailTxt.text ?? "", password: SignUpView.passwordTxt.text ?? "" , age: SignUpView.ageTxt.text ?? "")
            
         }
 
@@ -116,8 +94,5 @@ extension SignUpVC:SignUpProtocol{
         let navigationController = UINavigationController(rootViewController: todoListVC)
         AppDelegate.shared().window?.rootViewController = navigationController
     }
-    
-    
-    
     
 }

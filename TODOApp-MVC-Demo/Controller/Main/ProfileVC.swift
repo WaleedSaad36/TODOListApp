@@ -8,15 +8,25 @@
 
 import UIKit
 
+protocol ProfileProtocol:class{
+    var IdUser:String { get set }
+    var TableView:UITableView{get}
+    
+    func goToSignIn()
+    func getImage(data:Data)
+    func user (userName:String, email:String , age:String)
+    
+    
+    
+    func showLoader ()
+    
+    func hideLoader()
+}
+
+
 class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var imageProfile: UIImageView!
-    
-    
-    @IBOutlet weak var userNameLbl: UILabel!
-    @IBOutlet weak var emailLbl: UILabel!
-    @IBOutlet weak var ageLbl: UILabel!
-    
+    //@IBOutlet weak var imageProfile: UIImageView!
     
     // properties
     var keyFlag:String = ""
@@ -24,12 +34,13 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     var presenter:ProfilePresenter!
     
     
+    @IBOutlet var ProfileView: profileView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-       
-        loadAllData()
+        
+        presenter.loadAllData()
     
     }
     
@@ -44,45 +55,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     }
     
     
-//    func showLoader(){
-//        self.view.showLoader()
-//    }
-//
-//    func hideLoader(){
-//        self.view.HideLoader()
-//    }
-//
-    func showLoader (){
-        self.view.showLoader()
-    }
-    
-    
-    func hideLoader(){
-        self.view.HideLoader()
-    }
-    
-     func loadAllData (){
-        self.view.showLoader()
-        
-        APIManager.getLoggin{(response) in
-            switch response{
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let result):
-                print(result)
-                self.userNameLbl.text = result.name
-                self.ageLbl.text = String(result.age)
-                self.emailLbl.text = result.email
-                self.idUser = result.id
-                //self.getImageAPI(id:self.idUser)
-                self.presenter.getImageAPI(id: result.id)
-                self.tableView.reloadData()
-            }
-            
-        }
-        self.view.HideLoader()
-    }
-    
+
     
     let imagePicker = UIImagePickerController()
     
@@ -95,6 +68,8 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
         
         self.present(imagePicker, animated: true, completion: nil)
     }
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
@@ -112,11 +87,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func getImage(data:Data){
-        self.imageProfile.image = UIImage(data:data)
-        
-    }
-    
+  
     
     @IBAction func backBtn(_ sender: Any) {
         let todoListVC = TodoListVC.create()
@@ -157,7 +128,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
                     
                 case .success(_):
                     
-                    self.loadAllData()
+                    self.presenter.loadAllData()
                     }
                 }
                 
@@ -173,65 +144,10 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
         
         self.presenter.logOut()
     }
-    func goToSignIn(){
-        let signInVc = SignInVC.create()
-        let signInNavVC = UINavigationController(rootViewController: signInVc)
-        AppDelegate.shared().window?.rootViewController = signInNavVC
-    }
     
-//     func uploadImage(data: data){
-//        APIManager.uploadPhoto(with: data) { (succes)  in
-//
-//            if succes == true {
-//                print("photo Upload succesfuly")
-//                self.getImageAPI(id: self.idUser)
-//            }else{
-//                print("field Upload Photo")
-//
-//            }
-//
-//        }
-//
-//    }
-    
-    
-    
-//    func getImageAPI(id:String){
-//
-//        self.view.showLoader()
-//
-////        APIManager.getUserPhoto(whit: id){ (_,data,_) in
-////
-////            if let data = data {
-////                self.imageProfile.image = UIImage(data:data)
-////            }
-////
-////                print("get image succes")
-//        self.view.HideLoader()
-//    }
-//    }
+ 
 
     // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return User.count
-//
-//    }
-
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-    //Override to support conditional editing of the table view.
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
@@ -251,7 +167,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var arrItems:[String] = [userNameLbl.text ?? "",emailLbl.text ?? "" ,ageLbl.text ?? ""]
+        var arrItems:[String] = [ProfileView.userNameTxt.text ?? "",ProfileView.emailTxt.text ?? "" ,ProfileView.ageTxt.text ?? ""]
         let moveObjec = arrItems[sourceIndexPath.row]
         arrItems.remove(at: sourceIndexPath.row)
         arrItems.insert(moveObjec, at: destinationIndexPath.row)
@@ -270,29 +186,50 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     }
  
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+ 
 
+}
+extension ProfileVC:ProfileProtocol{
+    
+    func user(userName: String, email: String, age: String) {
+        
+        self.ProfileView.userNameLbl.text = userName
+        self.ProfileView.emailLbl.text = email
+        self.ProfileView.ageLbl.text = age
+        
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func getImage(data: Data) {
+        self.ProfileView.imageProfile.image = UIImage(data:data)
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    var IdUser: String {
+        get {
+            return self.idUser
+        }
+        set {
+            idUser = ""
+        }
     }
-    */
-
+    var TableView: UITableView {
+        return self.tableView
+    }
+    
+    func showLoader() {
+        self.view.showLoader()
+    }
+    
+    func hideLoader() {
+        self.view.HideLoader()
+    }
+    
+    func goToSignIn() {
+        let signInVc = SignInVC.create()
+        let signInNavVC = UINavigationController(rootViewController: signInVc)
+        AppDelegate.shared().window?.rootViewController = signInNavVC
+    }
+    
+    
+    
+    
 }

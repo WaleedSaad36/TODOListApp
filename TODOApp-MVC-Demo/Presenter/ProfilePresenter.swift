@@ -11,8 +11,8 @@ import Foundation
 
 class ProfilePresenter{
     
-    var view:ProfileVC!
-    init(view:ProfileVC) {
+    var view:ProfileProtocol!
+    init(view:ProfileProtocol) {
         self.view = view
     }
     
@@ -25,12 +25,13 @@ class ProfilePresenter{
                 
             case .success(let data ):
                 print(data)
-                self.view.userNameLbl.text = data.name
-                self.view.ageLbl.text = String(data.age)
-                self.view.emailLbl.text = data.email
-                self.view.idUser = data.id
-                self.getImageAPI(id:self.view.idUser)
-                self.view.tableView.reloadData()
+                
+                self.view.user(userName: data.name, email: data.email, age: String(data.age))
+                self.view.IdUser = data.id
+                self.view.IdUser = data.id
+                
+                self.getImageAPI(id:data.id)
+                self.view.TableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -45,7 +46,7 @@ class ProfilePresenter{
             
             if succes == true {
                 print("photo Upload succesfuly")
-                self.getImageAPI(id: self.view.idUser)
+                self.getImageAPI(id: self.view.IdUser)
             }else{
                 print("field Upload Photo")
             }
@@ -65,7 +66,6 @@ class ProfilePresenter{
             
             if let data = data {
                 self.view.getImage(data: data)
-                
             }
             
             print("get image succes")
@@ -78,18 +78,18 @@ class ProfilePresenter{
         self.view.showLoader()
     APIManager.logOutUser { (succes) in
     if succes{
-    
     UserDefaultsManager.shared().token = nil
         self.view.goToSignIn()
     }else {
     print("logOut not Success")
-    }
+        }
         self.view.hideLoader()
     }
     
     }
     
 }
+
 
 
 

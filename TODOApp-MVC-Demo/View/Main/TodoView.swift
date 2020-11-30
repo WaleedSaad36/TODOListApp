@@ -15,9 +15,9 @@ class TodoView: UIView {
     @IBOutlet weak var tableView: UITableView!
     
     
-    
     func setUp()  {
         setUpTableView(TableView: tableView)
+        
     }
     
     }

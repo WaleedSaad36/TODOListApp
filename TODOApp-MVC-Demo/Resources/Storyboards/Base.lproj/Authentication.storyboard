@@ -122,10 +122,6 @@
                     </view>
                     <connections>
                         <outlet property="SignInView" destination="6Mn-3g-04e" id="I8q-Lt-4Xa"/>
-                        <outlet property="background2" destination="cHX-wI-hHk" id="QVS-gA-zVI"/>
-                        <outlet property="emailTxt" destination="esf-Vu-r1e" id="aos-UR-2l4"/>
-                        <outlet property="passwordTxt" destination="M8A-47-FxI" id="FRE-hQ-32L"/>
-                        <outlet property="titloeLabel" destination="7XX-xr-0md" id="t8x-K5-usn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pr4-RO-vpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,25 +139,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background 2" translatesAutoresizingMaskIntoConstraints="NO" id="XfC-95-wzj">
                                 <rect key="frame" x="0.0" y="5" width="414" height="896"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-32-p5S">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Register" id="igA-Qy-PrG">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="backArrow" id="VaL-cb-9Oz">
-                                            <connections>
-                                                <action selector="backBtn:" destination="T6n-BO-Yei" id="qUc-TB-47L"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="awI-uj-1qh">
                                 <rect key="frame" x="20" y="199" width="374" height="372"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruR-y0-tgn">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        <color key="textColor" red="0.27781326789999999" green="0.35228116700000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                        <color key="textColor" red="0.27843137254901962" green="0.3529411764705882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z1k-mH-gcU">
@@ -173,7 +157,7 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-s3-Hzg">
                                         <rect key="frame" x="0.0" y="96" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" red="0.27781326789999999" green="0.35228116700000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -186,7 +170,7 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="md2-vd-bbS">
                                         <rect key="frame" x="0.0" y="192" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" red="0.27781326789999999" green="0.35228116700000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -199,7 +183,7 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUn-Ix-P3m">
                                         <rect key="frame" x="0.0" y="288" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" red="0.27781326789999999" green="0.35228116700000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -226,6 +210,18 @@
                                     <action selector="registerPressBtn:" destination="T6n-BO-Yei" eventType="touchUpInside" id="APb-wW-gZA"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-32-p5S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Register" id="igA-Qy-PrG">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="backArrow" id="VaL-cb-9Oz">
+                                            <connections>
+                                                <action selector="backBtn:" destination="T6n-BO-Yei" id="qUc-TB-47L"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -248,24 +244,19 @@
                         <viewLayoutGuide key="safeArea" id="ZD4-pD-Dq7"/>
                         <connections>
                             <outlet property="RegisterBtn" destination="vLs-J7-S6I" id="8ql-Ne-yMs"/>
+                            <outlet property="ageLbl" destination="qUn-Ix-P3m" id="8YS-oE-dPb"/>
                             <outlet property="ageTxt" destination="hOK-wz-5l9" id="lUE-iR-xNP"/>
+                            <outlet property="emailLbl" destination="AV0-s3-Hzg" id="bX6-VO-RGj"/>
                             <outlet property="emailTxt" destination="9tR-9B-qGM" id="JBK-FZ-TCv"/>
                             <outlet property="imageBackground" destination="XfC-95-wzj" id="s6X-ed-KY8"/>
+                            <outlet property="passwordLbl" destination="md2-vd-bbS" id="LlJ-sA-jBr"/>
                             <outlet property="passwordTxt" destination="Z53-hE-vyW" id="EZu-Hd-cdV"/>
+                            <outlet property="userNameLbl" destination="ruR-y0-tgn" id="qj4-B3-kyL"/>
                             <outlet property="userNameTxt" destination="Z1k-mH-gcU" id="csv-jd-R0X"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="SignUpView" destination="Zpo-mT-JwU" id="Dim-OJ-L5L"/>
-                        <outlet property="ageTxt" destination="hOK-wz-5l9" id="0Wq-db-43o"/>
-                        <outlet property="emailTxt" destination="9tR-9B-qGM" id="7nr-mJ-Cia"/>
-                        <outlet property="imageBackground" destination="XfC-95-wzj" id="NxG-Rv-i5X"/>
-                        <outlet property="lbl1" destination="ruR-y0-tgn" id="YUS-cQ-3KH"/>
-                        <outlet property="lbl2" destination="AV0-s3-Hzg" id="SHA-12-KAD"/>
-                        <outlet property="lbl4" destination="md2-vd-bbS" id="JjL-gY-5rB"/>
-                        <outlet property="lbl5" destination="qUn-Ix-P3m" id="mRU-PU-F6s"/>
-                        <outlet property="passwordTxt" destination="Z53-hE-vyW" id="1Eu-UJ-P1x"/>
-                        <outlet property="userNameTxt" destination="Z1k-mH-gcU" id="hgI-9b-Nx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ax-Qi-4cC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

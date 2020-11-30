@@ -27,13 +27,6 @@ class SignInVC: UIViewController {
 
     @IBOutlet var SignInView: SignInView!
     
-    @IBOutlet weak var background2: UIImageView!
-    
-    @IBOutlet weak var titloeLabel: UILabel!
-    
-    @IBOutlet weak var emailTxt: UITextField!
-    
-    @IBOutlet weak var passwordTxt: UITextField!
     
     var Presenter: SignInPresenter!
     
@@ -41,7 +34,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Icone Email
-        emailIcone(namedIcon: "emailIcon", textField: emailTxt)
+        emailIcone(namedIcon: "emailIcon", textField: SignInView.emailTxt)
         
         // setUpView
         SignInView.setUp()
@@ -61,7 +54,7 @@ class SignInVC: UIViewController {
     
     @IBAction func LoginBtn(_ sender: Any) {
         
-        Presenter.tryLogin(email: emailTxt.text ?? "", password: passwordTxt.text ?? "" )
+        Presenter.tryLogin(email: SignInView.emailTxt.text ?? "", password: SignInView.passwordTxt.text ?? "" )
     }
     
     

@@ -10,9 +10,20 @@ import UIKit
 
 class SignUpView: UIView {
     
-    
+    //OutLets Background Image
     @IBOutlet weak var imageBackground: UIImageView!
 
+    // outLets label
+    @IBOutlet weak var userNameLbl: UILabel!
+    
+    @IBOutlet weak var emailLbl: UILabel!
+    
+    @IBOutlet weak var passwordLbl: UILabel!
+    
+    @IBOutlet weak var ageLbl: UILabel!
+    
+    
+    // OutLest TextFields
     @IBOutlet weak var userNameTxt: UITextField!
     
     @IBOutlet weak var emailTxt: UITextField!
@@ -22,6 +33,8 @@ class SignUpView: UIView {
     @IBOutlet weak var ageTxt: UITextField!
     
     @IBOutlet weak var RegisterBtn: UIButton!
+    
+    // SetUp All Method <TextFeild - BackGround - Label - Button
     
     func setUp(){
         
@@ -38,14 +51,15 @@ class SignUpView: UIView {
         
         setUpButton(Button: RegisterBtn, setTitle: "Register", Textcolor: .white, backgroundColor: .red)
         
+        setUpLabel(label: userNameLbl, text: "Username")
+        setUpLabel(label: emailLbl, text: "Email")
+        setUpLabel(label: passwordLbl, text: "Password")
+        setUpLabel(label: ageLbl, text: "Age")
     }
     
-    
-    
-    
-    
-    
 }
+
+
 extension SignUpView{
    private func setUpTextField(TextField:UITextField,placeholder:String, isSecure:Bool = false,isPhone:Bool = false ){
         
@@ -72,6 +86,15 @@ extension SignUpView{
         Button.setTitle(setTitle, for: .normal)
         Button.backgroundColor = backgroundColor
         Button.layer.cornerRadius = Button.frame.height / 2
+        
+    }
+    
+    
+    private func setUpLabel(label:UILabel,text:String){
+        
+        label.textColor = .blue
+        label.text = text
+        label.font = UIFont(name: "Futura Medium ", size: 30)
         
     }
 }
