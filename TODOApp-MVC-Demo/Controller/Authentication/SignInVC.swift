@@ -28,7 +28,7 @@ class SignInVC: UIViewController {
     @IBOutlet var SignInView: SignInView!
     
     
-    var Presenter: SignInPresenter!
+    var signInViewModel: SignInVMProtocol!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
@@ -42,19 +42,17 @@ class SignInVC: UIViewController {
     }
     
     
-    
     // MARK:- Public Methods
     class func create() -> SignInVC {
         let signInVC: SignInVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signInVC)
-        signInVC.Presenter = SignInPresenter(view: signInVC)
+        signInVC.signInViewModel = SignInViewModel(view: signInVC) 
         return signInVC
         
     }
     
     
     @IBAction func LoginBtn(_ sender: Any) {
-        
-        Presenter.tryLogin(email: SignInView.emailTxt.text ?? "", password: SignInView.passwordTxt.text ?? "" )
+        signInViewModel.tryLogin(email: SignInView.emailTxt.text ?? "", password: SignInView.passwordTxt.text ?? "" )
     }
     
     

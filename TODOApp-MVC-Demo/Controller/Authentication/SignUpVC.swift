@@ -31,7 +31,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var imageBackground: UIImageView!
     
 
-    var presenter: SignUpPresenter!
+    var signUpViewModel: SignUpVMProtocol!
     
     
     // MARK:- Lifecycle methods
@@ -48,7 +48,7 @@ class SignUpVC: UIViewController {
     class func create() -> SignUpVC {
         let signUpVC: SignUpVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signUpVC)
         
-        signUpVC.presenter = SignUpPresenter(view: signUpVC)
+        signUpVC.signUpViewModel = SignUpViewModel(view: signUpVC)
         
         return signUpVC
     }
@@ -67,7 +67,7 @@ class SignUpVC: UIViewController {
     
     @IBAction func registerPressBtn(_ sender: Any) {
         
-        self.presenter.tryRegister(userName: SignUpView.userNameTxt.text ?? "", email: SignUpView.emailTxt.text ?? "", password: SignUpView.passwordTxt.text ?? "" , age: SignUpView.ageTxt.text ?? "")
+        self.signUpViewModel.tryRegister(userName: SignUpView.userNameTxt.text ?? "", email: SignUpView.emailTxt.text ?? "", password: SignUpView.passwordTxt.text ?? "" , age: SignUpView.ageTxt.text ?? "")
            
         }
 

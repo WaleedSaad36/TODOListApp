@@ -7,8 +7,14 @@
 //
 
 import Foundation
+protocol SignInVMProtocol:class{
+    
+    func tryLogin(email:String, password:String)
 
-class SignInPresenter{
+}
+
+
+class SignInViewModel{
     
     
    weak var view:SignInProtocol!
@@ -42,8 +48,6 @@ class SignInPresenter{
     //____  login SignInVC And API
     
     func login( email:String? , password: String?) {
-        
-    
         self.view.showLoader()
         
         APIManager.login(with: email! , password: password! ) { (response) in
@@ -52,7 +56,7 @@ class SignInPresenter{
                 print(error.localizedDescription)
             case .success(let result):
                 print(result.token)
-//                UserDefaultsManager.shared().token = result.token
+                UserDefaultsManager.shared().token = result.token
                 self.view.switchToMainState()
             }
             
@@ -62,6 +66,17 @@ class SignInPresenter{
         }
     
     
+//    func tryLogin(email:String, password:String) {
+//        if validateFields(email: email, password: password){
+//            login(email: email, password: password)
+//        }
+//
+//    }
+//
+    
+}
+extension SignInViewModel:SignInVMProtocol{
+    
     func tryLogin(email:String, password:String) {
         if validateFields(email: email, password: password){
             login(email: email, password: password)
@@ -69,6 +84,4 @@ class SignInPresenter{
         
     }
     
-    
 }
-

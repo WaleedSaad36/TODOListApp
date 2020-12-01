@@ -29,7 +29,9 @@ class TodoListVC: UIViewController {
     var todoArr:[TaskData] = []
     var newValue: String = ""
     var idArr:[String] = []
-    var presenter: TodoPresenter!
+    
+    var todoViewModel: TodoVMProtocol!
+    
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,7 @@ class TodoListVC: UIViewController {
         setUpTableView()
         
         TodoView.setUp()
-        self.presenter.loadAllData()
+        self.todoViewModel.loadAllData()
         self.navigationBar.hidesBackButton = true
     }
     
@@ -45,22 +47,19 @@ class TodoListVC: UIViewController {
     class func create() -> TodoListVC {
         let todoListVC: TodoListVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.todoListVC)
         
-        todoListVC.presenter = TodoPresenter(view:todoListVC)
+        todoListVC.todoViewModel = TOdoViewModel(view:todoListVC)
         
         return todoListVC
     }
     
-    func TableViewToProtocol(TableView:UITableView){
-        self.TodoView.tableView = TableView
-    }
-
+    
     func setUpTableView () {
         self.TodoView.tableView.register(UINib.init(nibName: Cells.todoCell, bundle: nil), forCellReuseIdentifier: Cells.todoCell)
         self.TodoView.tableView.dataSource = self
         self.TodoView.tableView.delegate = self
 
     }
-
+    
     
     @IBAction func addItemsBtn(_ sender: Any) {
         
@@ -79,7 +78,7 @@ class TodoListVC: UIViewController {
                 guard let descriptionAdd = alertController.textFields?[0].text else {return}
                 
                 
-                self.presenter.addNewTaskTodo( description: descriptionAdd)
+                self.todoViewModel.addNewTaskTodo( description: descriptionAdd)
             
             
         }

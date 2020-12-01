@@ -8,14 +8,48 @@
 
 
 import Foundation
+protocol ProfileVMProtocol:class{
+    
+    func loadAllData ()
+    func uploadImage(data: Data)
+    func logOut()
+    func getImageAPI(id:String)
+}
 
-class ProfilePresenter{
+
+
+
+class ProfileViewModel{
     
     var view:ProfileProtocol!
     init(view:ProfileProtocol) {
         self.view = view
     }
-    
+   
+ 
+    func getImageAPI(id:String){
+        
+        self.view.showLoader()
+        APIManager.getUserPhoto(whit: id) { (error, data, ImageResponse) in
+            guard error == nil  else{
+                print(error!.localizedDescription)
+                return
+            }
+            
+            if let data = data {
+                self.view.getImage(data: data)
+            }
+            
+            print("get image succes")
+        }
+        self.view.hideLoader()
+    }
+ 
+}
+
+// MARK Extension
+
+extension ProfileViewModel:ProfileVMProtocol{
     
     func loadAllData (){
         self.view.showLoader()
@@ -41,6 +75,7 @@ class ProfilePresenter{
     }
     
     
+    
     func uploadImage(data: Data){
         APIManager.uploadPhoto(with: data) { (succes)  in
             
@@ -54,42 +89,23 @@ class ProfilePresenter{
         }
         
     }
- 
-    func getImageAPI(id:String){
-        
-        self.view.showLoader()
-        APIManager.getUserPhoto(whit: id) { (error, data, ImageResponse) in
-            guard error == nil  else{
-                print(error!.localizedDescription)
-                return
-            }
-            
-            if let data = data {
-                self.view.getImage(data: data)
-            }
-            
-            print("get image succes")
-        }
-        self.view.hideLoader()
-    }
     
     
     func logOut(){
         self.view.showLoader()
-    APIManager.logOutUser { (succes) in
-    if succes{
-    UserDefaultsManager.shared().token = nil
-        self.view.goToSignIn()
-    }else {
-    print("logOut not Success")
+        APIManager.logOutUser { (succes) in
+            if succes{
+                UserDefaultsManager.shared().token = nil
+                self.view.goToSignIn()
+            }else {
+                print("logOut not Success")
+            }
+            self.view.hideLoader()
         }
-        self.view.hideLoader()
-    }
-    
+        
     }
     
 }
-
 
 
 

@@ -8,7 +8,16 @@
 
 import Foundation
 
-class SignUpPresenter{
+protocol SignUpVMProtocol:class{
+    
+    func tryRegister(userName:String,email:String, password:String,age:String )
+    
+}
+
+
+
+
+class SignUpViewModel{
     weak var view:SignUpProtocol!
     
     init(view:SignUpProtocol) {

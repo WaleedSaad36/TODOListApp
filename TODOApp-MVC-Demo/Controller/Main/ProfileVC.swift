@@ -16,8 +16,6 @@ protocol ProfileProtocol:class{
     func getImage(data:Data)
     func user (userName:String, email:String , age:String)
     
-    
-    
     func showLoader ()
     
     func hideLoader()
@@ -31,7 +29,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     // properties
     var keyFlag:String = ""
     var idUser:String = ""
-    var presenter:ProfilePresenter!
+    var prfileViewModel:ProfileVMProtocol!
     
     
     @IBOutlet var ProfileView: profileView!
@@ -40,7 +38,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         
-        presenter.loadAllData()
+        prfileViewModel.loadAllData()
     
     }
     
@@ -49,7 +47,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     class func create() -> ProfileVC {
         let profileVC: ProfileVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.profileVC)
         
-        profileVC.presenter = ProfilePresenter(view: profileVC)
+        profileVC.prfileViewModel = ProfileViewModel(view: profileVC)
         
         return profileVC
     }
@@ -76,7 +74,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
         guard let data = image.jpegData(compressionQuality: 0.8) else {return}
         
         // func upload image to server
-        presenter.uploadImage(data: data)
+        prfileViewModel.uploadImage(data: data)
         
         picker.dismiss(animated: true, completion: nil)
         
@@ -128,7 +126,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
                     
                 case .success(_):
                     
-                    self.presenter.loadAllData()
+                    self.prfileViewModel.loadAllData()
                     }
                 }
                 
@@ -142,7 +140,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     
     @IBAction func logOutBtn(_ sender: Any) {
         
-        self.presenter.logOut()
+        self.prfileViewModel.logOut()
     }
     
  

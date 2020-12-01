@@ -43,7 +43,7 @@ class SignUpView: UIView {
         
         setUpTextField(TextField: emailTxt, placeholder: "Please Enter Email", isSecure: false, isPhone: false)
         
-        setUpTextField(TextField: passwordTxt, placeholder: "Please Enter Password", isSecure: true, isPhone: true)
+        setUpTextField(TextField: passwordTxt, placeholder: "Please Enter Password", isSecure: true, isPhone: false)
         
         setUpTextField(TextField: ageTxt , placeholder: "Please Enter Age +18 ", isSecure: false, isPhone: false)
         
