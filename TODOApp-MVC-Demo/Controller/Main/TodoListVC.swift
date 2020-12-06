@@ -98,7 +98,7 @@ class TodoListVC: UIViewController {
     
     @IBAction func goToProfile(_ sender: Any) {
         
-        let profileVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        let profileVC = ProfileVC.create()
         profileVC.delegate = delegate
         self.navigationController?.pushViewController(profileVC, animated: true)
         }

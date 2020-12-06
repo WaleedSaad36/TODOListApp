@@ -94,12 +94,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
   
     
     @IBAction func backBtn(_ sender: Any) {
-        //let todoListVC = TodoListVC.create()
-        //todoListVC.delegate.showMainState()
-        //self.navigationController?.popToViewController(todoListVC, animated: true)
-        let profileVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
-       
-        self.navigationController?.popToViewController(profileVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -107,8 +102,6 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
         
         self.tableView.isEditing = self.tableView.isEditing
         sender.title = (self.tableView.isEditing ) ? "Done" : "Edit"
-        
-        
         
     }
     
