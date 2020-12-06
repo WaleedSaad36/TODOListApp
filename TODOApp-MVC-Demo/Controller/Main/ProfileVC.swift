@@ -8,36 +8,42 @@
 
 import UIKit
 
+protocol MainNavigationDelegate:class {
+    func showAuthState()
+}
+
 protocol ProfileProtocol:class{
     var IdUser:String { get set }
     var TableView:UITableView{get}
-    
-    func goToSignIn()
     func getImage(data:Data)
-    func user (userName:String, email:String , age:String)
-    
+    func user(userName:String, email:String , age:String)
+    func switchToAuthState()
     func showLoader ()
-    
     func hideLoader()
 }
 
 
 class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    //@IBOutlet weak var imageProfile: UIImageView!
+    
+    @IBOutlet weak var imageProfile: UIImageView!
+    @IBOutlet weak var imageLbl: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var emailLbl: UILabel!
+    @IBOutlet weak var age: UILabel!
+    @IBOutlet weak var ageLbl: UILabel!
+    @IBOutlet weak var logOutLbl: UILabel!
     
     // properties
     var keyFlag:String = ""
     var idUser:String = ""
     var prfileViewModel:ProfileVMProtocol!
-    
-    
-    @IBOutlet var ProfileView: profileView!
+    weak var delegate:MainNavigationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        
         prfileViewModel.loadAllData()
     
     }
@@ -88,9 +94,12 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
   
     
     @IBAction func backBtn(_ sender: Any) {
-        let todoListVC = TodoListVC.create()
-
-        self.navigationController?.popToViewController(todoListVC, animated: true)
+        //let todoListVC = TodoListVC.create()
+        //todoListVC.delegate.showMainState()
+        //self.navigationController?.popToViewController(todoListVC, animated: true)
+        let profileVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+       
+        self.navigationController?.popToViewController(profileVC, animated: true)
     }
     
     
@@ -165,7 +174,7 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
     
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var arrItems:[String] = [ProfileView.userNameTxt.text ?? "",ProfileView.emailTxt.text ?? "" ,ProfileView.ageTxt.text ?? ""]
+        var arrItems:[String] = [userNameLbl.text ?? "", emailLbl.text ?? "" , ageLbl.text ?? ""]
         let moveObjec = arrItems[sourceIndexPath.row]
         arrItems.remove(at: sourceIndexPath.row)
         arrItems.insert(moveObjec, at: destinationIndexPath.row)
@@ -188,17 +197,26 @@ class ProfileVC: UITableViewController,UIImagePickerControllerDelegate, UINaviga
 
 }
 extension ProfileVC:ProfileProtocol{
+    func switchToAuthState() {
+        
+        self.delegate?.showAuthState()
+        
+    }
+    
+    
+    
+    
     
     func user(userName: String, email: String, age: String) {
         
-        self.ProfileView.userNameLbl.text = userName
-        self.ProfileView.emailLbl.text = email
-        self.ProfileView.ageLbl.text = age
+        self.userNameLbl.text = userName
+        self.emailLbl.text = email
+        self.ageLbl.text = age
         
     }
     
     func getImage(data: Data) {
-        self.ProfileView.imageProfile.image = UIImage(data:data)
+        self.imageProfile.image = UIImage(data:data)
     }
     
     var IdUser: String {
@@ -219,12 +237,6 @@ extension ProfileVC:ProfileProtocol{
     
     func hideLoader() {
         self.view.HideLoader()
-    }
-    
-    func goToSignIn() {
-        let signInVc = SignInVC.create()
-        let signInNavVC = UINavigationController(rootViewController: signInVc)
-        AppDelegate.shared().window?.rootViewController = signInNavVC
     }
     
     

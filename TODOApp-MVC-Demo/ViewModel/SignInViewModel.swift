@@ -8,14 +8,11 @@
 
 import Foundation
 protocol SignInVMProtocol:class{
-    
     func tryLogin(email:String, password:String)
-
 }
 
 
 class SignInViewModel{
-    
     
    weak var view:SignInProtocol!
     
@@ -59,20 +56,12 @@ class SignInViewModel{
                 UserDefaultsManager.shared().token = result.token
                 self.view.switchToMainState()
             }
-            
+            print("login Success")
          }
         self.view.hideLoader()
         
         }
     
-    
-//    func tryLogin(email:String, password:String) {
-//        if validateFields(email: email, password: password){
-//            login(email: email, password: password)
-//        }
-//
-//    }
-//
     
 }
 extension SignInViewModel:SignInVMProtocol{

@@ -11,21 +11,11 @@ import UIKit
 class SignInView: UIView {
 
     @IBOutlet weak var Background: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var emailTxt: UITextField!
-    
-    
     @IBOutlet weak var passwordTxt: UITextField!
-    
     @IBOutlet weak var LoginBtn: UIButton!
-    
     @IBOutlet weak var RegisterBtn: UIButton!
-    
-    
-    
-    
     
     
     func setUp(){
@@ -52,7 +42,6 @@ extension SignInView{
         
     }
     
-    
     private func setUpButton(Button:UIButton,setTitle:String,Textcolor:UIColor,backgroundColor:UIColor ){
         
         Button.backgroundColor = .black
@@ -62,7 +51,6 @@ extension SignInView{
         Button.layer.cornerRadius = Button.frame.height / 2
         
     }
-    
     
     private func setUpBackground(){
         
@@ -75,11 +63,5 @@ extension SignInView{
         Label.textColor = .black
         
     }
-    
-    
-    
-    
-    
-    
     
 }

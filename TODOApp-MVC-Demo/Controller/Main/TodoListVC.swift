@@ -7,22 +7,21 @@
 //
 
 import UIKit
+
+
+
 protocol TodoProtocol :class{
-    
-    
     func showLoader()
-   
     func hideLoader()
     func addProtocolArr(TodoArr:[TaskData])
     var TableViwe:UITableView { get }
-    
 }
 
 
 
 class TodoListVC: UIViewController {
 
-    @IBOutlet var TodoView: TodoView!
+    @IBOutlet weak var TodoView: TodoView!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
     var addNote: UITextField?
@@ -31,6 +30,8 @@ class TodoListVC: UIViewController {
     var idArr:[String] = []
     
     var todoViewModel: TodoVMProtocol!
+    weak var delegate:MainNavigationDelegate?
+    
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
@@ -59,7 +60,6 @@ class TodoListVC: UIViewController {
         self.TodoView.tableView.delegate = self
 
     }
-    
     
     @IBAction func addItemsBtn(_ sender: Any) {
         
@@ -99,8 +99,8 @@ class TodoListVC: UIViewController {
     @IBAction func goToProfile(_ sender: Any) {
         
         let profileVC = UIStoryboard(name: Storyboards.main, bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        profileVC.delegate = delegate
         self.navigationController?.pushViewController(profileVC, animated: true)
-    
         }
     
     

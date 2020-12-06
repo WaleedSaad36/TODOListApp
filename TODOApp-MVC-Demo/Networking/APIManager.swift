@@ -51,6 +51,12 @@ class APIManager {
         
     }
     
+    class func deletTask (whit id: String ,completion: @escaping(Bool)-> Void){
+        requestBool(APIRouter.addNewTask( id)) { (response) in
+            completion(response)
+        }
+    }
+    
     class func UpdateProfileData( key: String, newValue: String, completion: @escaping(Result<UpdataProfileData, Error>)-> ()){
         
         request(APIRouter.UpdateProfileData(key, newValue)) { (success) in
@@ -278,8 +284,7 @@ class func register(with name: String, email: String, password:String , age:Int,
 //            completion(image, error)
 //        }
 //    }
-//
-   
+    
     class func getUserPhoto (whit id: String ,completion: @escaping (_ error: Error?, _ image: Data?, _ imageResponese: ImageResponse?) -> Void) {
         
         print("\(URLs.getImage)/\(id)/avatar")

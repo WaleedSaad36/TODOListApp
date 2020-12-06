@@ -83,14 +83,14 @@
         <scene sceneID="8Go-iS-udd">
             <objects>
                 <tableViewController storyboardIdentifier="ProfileVC" id="euO-zp-HDk" customClass="ProfileVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="kJH-QZ-PnY" customClass="profileView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="kJH-QZ-PnY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="User Image" id="kaA-cx-faM">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCell" rowHeight="103" id="rI9-9O-e8J">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="103" id="rI9-9O-e8J">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rI9-9O-e8J" id="Nbl-qm-6MV">
@@ -262,32 +262,32 @@
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="EditBtn" destination="Frb-ww-kNg" id="n6h-CI-x6J"/>
-                            <outlet property="LogOutBtn" destination="Q9r-DD-E0c" id="unv-cN-WU2"/>
-                            <outlet property="ageLbl" destination="H5L-dA-mDd" id="GIA-g3-lRb"/>
-                            <outlet property="ageTxt" destination="DUU-9E-ruS" id="pUR-Ps-jnV"/>
-                            <outlet property="charLabel" destination="yvC-6Z-8Lb" id="vYI-AF-W3i"/>
-                            <outlet property="emailLbl" destination="ssC-Xm-YNS" id="zOY-7v-bwx"/>
-                            <outlet property="emailTxt" destination="oQ4-rT-YBe" id="WYO-AQ-pYC"/>
-                            <outlet property="imageProfile" destination="hgw-c1-Ohb" id="1WJ-Ex-38k"/>
-                            <outlet property="userNameLbl" destination="gpB-H4-XJx" id="Bc5-dL-VfG"/>
-                            <outlet property="userNameTxt" destination="F6B-LU-az2" id="rmg-mP-DvL"/>
+                            <outlet property="dataSource" destination="euO-zp-HDk" id="bwC-HY-Iks"/>
+                            <outlet property="delegate" destination="euO-zp-HDk" id="0U8-2r-IWk"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="CFQ-8Q-Ahy">
                         <barButtonItem key="leftBarButtonItem" image="backArrow" id="vSm-FY-nb6">
                             <connections>
-                                <action selector="backBtn:" destination="euO-zp-HDk" id="9dq-Zd-D58"/>
+                                <action selector="backBtn:" destination="euO-zp-HDk" id="cGc-bb-YK3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Image" id="Rvp-zV-xYN">
                             <connections>
-                                <action selector="addImage:" destination="euO-zp-HDk" id="vsK-bv-FO9"/>
+                                <action selector="addImage:" destination="euO-zp-HDk" id="Kto-Xd-ivf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ProfileView" destination="kJH-QZ-PnY" id="a9k-lM-k0V"/>
+                        <outlet property="age" destination="H5L-dA-mDd" id="uMS-k9-Ci4"/>
+                        <outlet property="ageLbl" destination="DUU-9E-ruS" id="NzR-FB-xRy"/>
+                        <outlet property="email" destination="ssC-Xm-YNS" id="5Tr-qP-yfC"/>
+                        <outlet property="emailLbl" destination="oQ4-rT-YBe" id="jWG-Op-m3F"/>
+                        <outlet property="imageLbl" destination="yvC-6Z-8Lb" id="PA5-A5-29R"/>
+                        <outlet property="imageProfile" destination="hgw-c1-Ohb" id="jqJ-p2-RAX"/>
+                        <outlet property="logOutLbl" destination="z31-kr-GMh" id="Gqf-nb-lyy"/>
+                        <outlet property="name" destination="gpB-H4-XJx" id="6B6-rX-shX"/>
+                        <outlet property="userNameLbl" destination="F6B-LU-az2" id="HIW-KW-gEw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVM-cB-3wJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

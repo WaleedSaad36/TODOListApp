@@ -20,6 +20,7 @@ enum APIRouter: URLRequestConvertible{
     case UpdateProfileData(_ key: String,_ newValue: String)
     case uploadPhoto(_ image :UIImage)
     case getUserPhoto (_ id: String)
+    case deleteTask(_ id: String)
     case logOutUser
     
     // MARK: - HttpMethod
@@ -80,6 +81,8 @@ enum APIRouter: URLRequestConvertible{
             return URLs.logOut
         case .getTodos:
             return URLs.getAllTask
+        case .deleteTask:
+            return URLs.deleteTaskById
         }
     }
     // MARK: - URLRequestConvertible
@@ -89,7 +92,7 @@ enum APIRouter: URLRequestConvertible{
         //httpMethod
         urlRequest.httpMethod = method.rawValue
         switch self {
-        case .getTodos , .addNewTask, .getLoggin, .logOutUser, .UpdateProfileData:
+        case .getTodos , .addNewTask, .getLoggin, .UpdateProfileData , .deleteTask:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.authorization)
             

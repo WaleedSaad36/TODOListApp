@@ -40,7 +40,6 @@ struct URLs {
     static let getLoginUser = "/user/me"
     static let uploadImage = "/user/me/avatar"
     static let getImage = "/user"
-    
     static let logOut = "/user/logout"
     
     // Task --> post - get - update - delete
@@ -51,7 +50,6 @@ struct URLs {
     static let updateTaskById = "/task/5ddcd1566b55da0017597239"
     
     static let deleteTaskById = "/task/5ddcd1566b55da0017597239"
-    
     
 }
 

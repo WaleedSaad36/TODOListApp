@@ -10,34 +10,19 @@ import UIKit
 
 class SignUpView: UIView {
     
-    //OutLets Background Image
     @IBOutlet weak var imageBackground: UIImageView!
-
-    // outLets label
     @IBOutlet weak var userNameLbl: UILabel!
-    
     @IBOutlet weak var emailLbl: UILabel!
-    
     @IBOutlet weak var passwordLbl: UILabel!
-    
     @IBOutlet weak var ageLbl: UILabel!
-    
-    
-    // OutLest TextFields
+    // OutLets >> textFields
     @IBOutlet weak var userNameTxt: UITextField!
-    
     @IBOutlet weak var emailTxt: UITextField!
-    
     @IBOutlet weak var passwordTxt: UITextField!
-    
     @IBOutlet weak var ageTxt: UITextField!
-    
     @IBOutlet weak var RegisterBtn: UIButton!
     
-    // SetUp All Method <TextFeild - BackGround - Label - Button
-    
     func setUp(){
-        
         
         setUpTextField(TextField: userNameTxt, placeholder: "Please Enter Username", isSecure: false, isPhone: false)
         
@@ -62,21 +47,17 @@ class SignUpView: UIView {
 
 extension SignUpView{
    private func setUpTextField(TextField:UITextField,placeholder:String, isSecure:Bool = false,isPhone:Bool = false ){
-        
+    
         TextField.backgroundColor = .white
         TextField.placeholder = placeholder
         TextField.isSecureTextEntry = isSecure
         if isPhone{
             TextField.keyboardType = .asciiCapableNumberPad
         }
-        
     }
     
    private func setupBackground(){
-        
         self.imageBackground.image = UIImage(named: "background 2")
-        
-        
     }
     
     private func setUpButton(Button:UIButton,setTitle:String,Textcolor:UIColor,backgroundColor:UIColor ){
@@ -86,7 +67,6 @@ extension SignUpView{
         Button.setTitle(setTitle, for: .normal)
         Button.backgroundColor = backgroundColor
         Button.layer.cornerRadius = Button.frame.height / 2
-        
     }
     
     

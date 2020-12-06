@@ -11,13 +11,8 @@ import UIKit
 protocol SignUpProtocol:class {
     
     func presentError(messege:String)
-    
     func showLoader()
-    
-    
     func hideLoader()
-    
-    
     func switchToMainState()
 }
 
@@ -25,21 +20,18 @@ protocol SignUpProtocol:class {
 
 class SignUpVC: UIViewController {
 
-    @IBOutlet var SignUpView: SignUpView!
+    @IBOutlet weak var signUpView: SignUpView!
     
     
-    @IBOutlet weak var imageBackground: UIImageView!
-    
-
     var signUpViewModel: SignUpVMProtocol!
-    
+    weak var delegate:AuthNavigationDelegate?
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailIcone(namedIcon:"emailIcon" , textField: SignUpView.emailTxt)
-        SignUpView.setUp()
+        emailIcone(namedIcon:"emailIcon" , textField: signUpView.emailTxt)
+        signUpView.setUp()
         
         
     }
@@ -67,7 +59,7 @@ class SignUpVC: UIViewController {
     
     @IBAction func registerPressBtn(_ sender: Any) {
         
-        self.signUpViewModel.tryRegister(userName: SignUpView.userNameTxt.text ?? "", email: SignUpView.emailTxt.text ?? "", password: SignUpView.passwordTxt.text ?? "" , age: SignUpView.ageTxt.text ?? "")
+        self.signUpViewModel.tryRegister(userName: signUpView.userNameTxt.text ?? "", email: signUpView.emailTxt.text ?? "", password: signUpView.passwordTxt.text ?? "" , age: signUpView.ageTxt.text ?? "")
            
         }
 
@@ -88,11 +80,8 @@ extension SignUpVC:SignUpProtocol{
         self.view.HideLoader()
     }
     
-    
     func switchToMainState() {
-        let todoListVC = TodoListVC.create()
-        let navigationController = UINavigationController(rootViewController: todoListVC)
-        AppDelegate.shared().window?.rootViewController = navigationController
+       self.delegate?.showMainState()
     }
     
 }

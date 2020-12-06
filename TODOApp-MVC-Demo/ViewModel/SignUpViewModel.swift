@@ -9,12 +9,8 @@
 import Foundation
 
 protocol SignUpVMProtocol:class{
-    
     func tryRegister(userName:String,email:String, password:String,age:String )
-    
 }
-
-
 
 
 class SignUpViewModel{
@@ -65,20 +61,7 @@ class SignUpViewModel{
             }
         self.view.hideLoader()
     }
-    
-//    
-//    func tryRegister(userName:String,email:String, password:String,age:String ) {
-//        print("\(userName)) \(password)   \(email)  \(age)")
-//        guard let ageInt = Int(age) else {return}
-//        
-//        if validateFields(email: email, password: password){
-//            print("kkkkkkk")
-//            register(userName: userName, email: email, password: password, age: ageInt)
-//            
-//        }
-//        
-//    }
-    
+
     
 }
 extension SignUpViewModel:SignUpVMProtocol{

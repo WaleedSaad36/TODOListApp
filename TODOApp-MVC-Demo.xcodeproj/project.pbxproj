@@ -15,12 +15,12 @@
 		7812E24D25549CB5009EB229 /* EX+TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812E24C25549CB5009EB229 /* EX+TextFields.swift */; };
 		78BF4D6C25692B79003CC98A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF4D6B25692B79003CC98A /* SignInViewModel.swift */; };
 		78BF4D6E25698104003CC98A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BF4D6D25698104003CC98A /* SignUpViewModel.swift */; };
-		78CF7412256E528F009D31CB /* ToDoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF7411256E528F009D31CB /* ToDoPresenter.swift */; };
+		78C4712E257ADB740086D9CB /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C4712D257ADB740086D9CB /* TodoViewModel.swift */; };
+		78C47134257BDE0C0086D9CB /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C47133257BDE0C0086D9CB /* AppStateManager.swift */; };
 		78CF7414256E74F3009D31CB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF7413256E74F3009D31CB /* ProfileViewModel.swift */; };
 		78D9E848255C64D500FBEF43 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E847255C64D500FBEF43 /* UserData.swift */; };
 		78D9E84A255C668D00FBEF43 /* AddNewTaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E849255C668D00FBEF43 /* AddNewTaskResponse.swift */; };
 		78DA9680256C6B9700F47219 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DA967F256C6B9700F47219 /* APIRouter.swift */; };
-		78E1C18025758B0000E649EF /* profileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E1C17F25758B0000E649EF /* profileView.swift */; };
 		78E90C1E25561AA7003AC3A3 /* EX+UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E90C1D25561AA7003AC3A3 /* EX+UIView+Loader.swift */; };
 		78E90C27255624FA003AC3A3 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E90C25255624FA003AC3A3 /* TodoCell.swift */; };
 		78E90C28255624FA003AC3A3 /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E90C26255624FA003AC3A3 /* TodoCell.xib */; };
@@ -58,12 +58,12 @@
 		7812E24C25549CB5009EB229 /* EX+TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+TextFields.swift"; sourceTree = "<group>"; };
 		78BF4D6B25692B79003CC98A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		78BF4D6D25698104003CC98A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		78CF7411256E528F009D31CB /* ToDoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPresenter.swift; sourceTree = "<group>"; };
+		78C4712D257ADB740086D9CB /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		78C47133257BDE0C0086D9CB /* AppStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateManager.swift; sourceTree = "<group>"; };
 		78CF7413256E74F3009D31CB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		78D9E847255C64D500FBEF43 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		78D9E849255C668D00FBEF43 /* AddNewTaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskResponse.swift; sourceTree = "<group>"; };
 		78DA967F256C6B9700F47219 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
-		78E1C17F25758B0000E649EF /* profileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileView.swift; sourceTree = "<group>"; };
 		78E90C1D25561AA7003AC3A3 /* EX+UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EX+UIView+Loader.swift"; sourceTree = "<group>"; };
 		78E90C25255624FA003AC3A3 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		78E90C26255624FA003AC3A3 /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
@@ -147,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				780352DC256EF652007AA1E9 /* TodoView.swift */,
-				78E1C17F25758B0000E649EF /* profileView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -157,7 +156,7 @@
 			children = (
 				78BF4D6B25692B79003CC98A /* SignInViewModel.swift */,
 				78BF4D6D25698104003CC98A /* SignUpViewModel.swift */,
-				78CF7411256E528F009D31CB /* ToDoPresenter.swift */,
+				78C4712D257ADB740086D9CB /* TodoViewModel.swift */,
 				78CF7413256E74F3009D31CB /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
@@ -216,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				B76E56902548A24A00C13D43 /* AppDelegate.swift */,
+				78C47133257BDE0C0086D9CB /* AppStateManager.swift */,
 				B76E56A42548A2B400C13D43 /* Networking */,
 				B76E56A52548A2BE00C13D43 /* Managers */,
 				78FEF251254D8D5E00E913B1 /* Utilitis & Ex */,
@@ -471,7 +471,6 @@
 				78F702B525634C9B00D4E703 /* ImageResponse.swift in Sources */,
 				78DA9680256C6B9700F47219 /* APIRouter.swift in Sources */,
 				B76E56BC2548A84600C13D43 /* SignUpVC.swift in Sources */,
-				78CF7412256E528F009D31CB /* ToDoPresenter.swift in Sources */,
 				B76E56C72548BEE100C13D43 /* UserDefaultsManager.swift in Sources */,
 				B76E56B52548A63E00C13D43 /* UIViewController+Storyboard.swift in Sources */,
 				78E90C2C2556393B003AC3A3 /* TodosData.swift in Sources */,
@@ -485,9 +484,10 @@
 				78CF7414256E74F3009D31CB /* ProfileViewModel.swift in Sources */,
 				B76E56C32548B2B100C13D43 /* Constants.swift in Sources */,
 				78BF4D6C25692B79003CC98A /* SignInViewModel.swift in Sources */,
-				78E1C18025758B0000E649EF /* profileView.swift in Sources */,
+				78C4712E257ADB740086D9CB /* TodoViewModel.swift in Sources */,
 				780352D8256ED3FF007AA1E9 /* SignInView.swift in Sources */,
 				780352DD256EF652007AA1E9 /* TodoView.swift in Sources */,
+				78C47134257BDE0C0086D9CB /* AppStateManager.swift in Sources */,
 				78FEF253254D8E9E00E913B1 /* EX+VC.swift in Sources */,
 				78E90C372559716A003AC3A3 /* EX+UIViewController+Alert.swift in Sources */,
 				78F7838A255AD96400ED0D47 /* ProfileVC.swift in Sources */,

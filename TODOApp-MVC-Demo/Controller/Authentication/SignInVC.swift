@@ -8,16 +8,19 @@
 
 import UIKit
 
+// Auth Degate
+//-1
+protocol AuthNavigationDelegate:class {
+    func showMainState()
+}
+
+
 // POP InterFace SignInVC
 protocol SignInProtocol:class {
     
     func presentError(messege:String)
-    
     func showLoader()
-    
     func hideLoader()
-    
-    
     func switchToMainState()
     
     
@@ -25,11 +28,12 @@ protocol SignInProtocol:class {
 
 class SignInVC: UIViewController {
 
-    @IBOutlet var SignInView: SignInView!
+    @IBOutlet weak var SignInView: SignInView!
     
     
     var signInViewModel: SignInVMProtocol!
-    
+    //-2
+    var delegate: AuthNavigationDelegate!
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,7 @@ class SignInVC: UIViewController {
         emailIcone(namedIcon: "emailIcon", textField: SignInView.emailTxt)
         
         // setUpView
-        SignInView.setUp()
+        self.SignInView.setUp()
 
     }
     
@@ -80,11 +84,9 @@ extension SignInVC :SignInProtocol{
         self.view.HideLoader()
     }
     
-    
+    // -3
     func switchToMainState() {
-        let todoListVC = TodoListVC.create()
-        let navigationController = UINavigationController(rootViewController: todoListVC)
-        AppDelegate.shared().window?.rootViewController = navigationController
+        self.delegate.showMainState()
     }
     
 }
